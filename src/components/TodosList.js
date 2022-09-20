@@ -5,11 +5,14 @@ class TodosList extends React.PureComponent {
   render() {
     return (
       <>
-        <ul>
-          {this.props.todos.map((todo) => (
-            <li TodoItem key={todo.id}>{todo}</li>
-          ))}
-        </ul>
+        {this.props.todos.map((todo) => (
+          <TodoItem
+            key={todo.id}
+            todo={todo}
+            handleChangeProps={this.props.handleChangeProps}
+            deleteTodoProps={this.props.deleteTodoProps}
+          />
+        ))}
       </>
     );
   }
