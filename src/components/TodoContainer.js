@@ -5,7 +5,14 @@ import Header from './Header';
 import InputTodo from './InputTodo';
 
 const TodoContainer = () => {
-  const [todos, setTodos] = useState([]);
+  const getInitialTodos = () => {
+    const temp = localStorage.getItem('todos');
+    const savedTodos = JSON.parse(temp);
+
+    return savedTodos || [];
+  };
+
+  const [todos, setTodos] = useState(getInitialTodos());
 
   const handleChange = (id) => {
     setTodos((prevState) => prevState.map((todo) => {
@@ -46,20 +53,9 @@ const TodoContainer = () => {
   };
 
   useEffect(() => {
-    console.log('test run');
-
-    const temp = localStorage.getItem('todos');
-    const loadedTodos = JSON.parse(temp);
-
-    if (loadedTodos) {
-      setTodos(loadedTodos);
-    }
-  }, []);
-
-  useEffect(() => {
-    const temp = JSON.stringify(todos)
-    localStorage.setItem("tosos", temp)
-  }, [todos])
+    const temp = JSON.stringify(todos);
+    localStorage.setItem('todos', temp);
+  }, [todos]);
 
   return (
     <div className="container">
