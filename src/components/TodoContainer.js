@@ -1,8 +1,8 @@
 import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import TodosList from './TodosList';
 import Header from './Header';
 import InputTodo from './InputTodo';
-import { v4 as uuidv4 } from 'uuid';
 
 class TodoContainer extends React.PureComponent {
   state = {
@@ -47,23 +47,23 @@ class TodoContainer extends React.PureComponent {
     });
   };
 
-  addTodoItem = title => {
+  addTodoItem = (title) => {
     const newTodo = {
       id: uuidv4(),
       title: exercise,
-      completed: false
-    }
+      completed: false,
+    };
     this.setState({
-      todos: [...this.state.todos, newTodo]
+      todos: [...this.state.todos, newTodo],
     });
   };
 
   render() {
     return (
       <div className="container">
-        <div className='inner'>
+        <div className="inner">
           <Header />
-          <InputTodo 
+          <InputTodo
             addTodoProps={this.addTodoItem}
           />
           <TodosList

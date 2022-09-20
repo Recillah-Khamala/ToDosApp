@@ -1,42 +1,45 @@
-import React, {PureComponent} from "react";
+import React, { PureComponent } from 'react';
 
 class InputTodo extends PureComponent {
   state = {
-    title: "",
+    title: '',
   }
 
-  onChange = e => {
+  onChange = (e) => {
     this.state({
       [e.target.name]: e.target.value,
     });
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
-    if (this.state.title.trim()) {
-      this.props.addTodoProps(this.state.title);
+    if (title.trim()) {
+      this.props.addTodoProps(title);
       this.setState({
-        title: "",
-      })
+        title: '',
+      });
     } else {
-      alert("Please write item")
+      alert('Please write item');
     }
   };
 
   render() {
+
+    const { title } = this.state
+
     return (
       <form onSubmit={this.handleSubmit} className="form-container">
-        <input 
-          type="text" 
-          placeholder="Add Todo..." 
-          value={this.state.title} 
+        <input
+          type="text"
+          placeholder="Add Todo..."
+          value={title}
           name="title"
           onChange={this.onChange}
         />
         <button>Submit</button>
       </form>
-    )
+    );
   }
 }
 
-export default InputTodo
+export default InputTodo;
