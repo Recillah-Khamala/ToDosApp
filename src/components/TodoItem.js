@@ -18,6 +18,10 @@ class TodoItem extends React.PureComponent {
     }
   }
 
+  componentWillUnmount() {
+    console.log('Cleaning up...');
+  }
+
   render() {
     const viewMode = {};
     const editMode = {};
