@@ -8,24 +8,24 @@ class TodoItem extends React.PureComponent {
 
   handleEditing = () => {
     this.setState({
-        editing:true,
-    })
+      editing: true,
+    });
   }
 
-  handleUpdatedDone = event => {
-    if (event.key === "Enter") {
-        this.setState({ editing: false })
+  handleUpdatedDone = (event) => {
+    if (event.key === 'Enter') {
+      this.setState({ editing: false });
     }
   }
 
   render() {
-    let viewMode = {}
-    let editMode = {}
+    const viewMode = {};
+    const editMode = {};
 
-    if (this.state.editing){
-      viewMode.display = "none"
-    } else{
-      editMode.display = "none"
+    if (this.state.editing) {
+      viewMode.display = 'none';
+    } else {
+      editMode.display = 'none';
     }
 
     const completedStyle = {
@@ -52,13 +52,13 @@ class TodoItem extends React.PureComponent {
           {title}
         </span>
         <div onDoubleClick={this.handleEditing} style={viewMode}>...</div>
-        <input 
-          type="text" 
-          style={editMode} 
+        <input
+          type="text"
+          style={editMode}
           className={styles.textInput}
-          value={title} 
-          onChange={e => {
-            this.props.setUpdate(e.target.value, id)
+          value={title}
+          onChange={(e) => {
+            this.props.setUpdate(e.target.value, id);
           }}
           onKeyDown={this.handleUpdatedDone}
         />

@@ -6,23 +6,13 @@ import InputTodo from './InputTodo';
 
 class TodoContainer extends React.PureComponent {
   state = {
-    todos: [
-      {
-        id: uuidv4(),
-        title: 'Take kids to school',
-        completed: true,
-      },
-      {
-        id: uuidv4(),
-        title: 'Clean the house',
-        completed: false,
-      },
-      {
-        id: uuidv4(),
-        title: 'Read for 30 mins',
-        completed: false,
-      },
-    ],
+    todos: [],
+  }
+
+  componentDidMount() {
+    fetch("https://jsonplaceholder.typicode.com/todos?_limit=10")
+      .then((response) => response.json())
+      .then((data) => this.setState({todos: data }));
   }
 
   handleChange = (id) => {
@@ -60,14 +50,14 @@ class TodoContainer extends React.PureComponent {
 
   setUpdate = (updatedTitle, id) => {
     this.setState({
-      todos: this.state.todos.map(todo => {
-        if (todo.id === id){
-          todo.title = updatedTitle
+      todos: this.state.todos.map((todo) => {
+        if (todo.id === id) {
+          todo.title = updatedTitle;
         }
-        return todo
+        return todo;
       }),
-    })
-  }  
+    });
+  }
 
   render() {
     return (
