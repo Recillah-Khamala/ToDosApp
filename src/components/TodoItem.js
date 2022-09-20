@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from '.TodoItem.module.css';
 
 class TodoItem extends React.PureComponent {
   render() {
@@ -6,6 +7,7 @@ class TodoItem extends React.PureComponent {
       <li>
         <input
           type="checkbox"
+          className={styles.checkbox}
           checked={this.props.todo.title}
           onChange={() => this.props.handleChangeProps(this.props.todo.id)}
         />
