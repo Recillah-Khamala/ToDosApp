@@ -5,3 +5,5 @@ const About = () => {
     hello from about page
   </div>
 }
+
+export default About
