@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { Route, Switch } from 'react-router-dom';
 import TodosList from './TodosList';
 import Header from './Header';
 import InputTodo from './InputTodo';
-import About from '../pages/About';
-import NotMatch from '../pages/NotMatch';
 import Navbar from './Navbar';
 
 const TodoContainer = () => {
@@ -42,6 +39,7 @@ const TodoContainer = () => {
       title,
       completed: false,
     };
+    console.log(newTodo);
     setTodos([...todos, newTodo]);
   };
 
@@ -49,7 +47,10 @@ const TodoContainer = () => {
     setTodos(
       todos.map((todo) => {
         if (todo.id === id) {
-          todo.title = updatedTitle;
+          return {
+            ...todo,
+            title: updatedTitle,
+          };
         }
         return todo;
       }),
@@ -64,30 +65,22 @@ const TodoContainer = () => {
   return (
     <>
       <Navbar />
-      <Switch>
-        <Route exact path="/">
-          <div className="container">
-            <div className="inner">
-              <Header />
-              <InputTodo
-                addTodoProps={addTodoItem}
-              />
-              <TodosList
-                todos={todos}
-                handleChange={handleChange}
-                deleteTodoProps={delTodo}
-                setUpdate={setUpdate}
-              />
-            </div>
-          </div>
-        </Route>
-        <Route path="/about">
-          <About />
-        </Route>
-        <Route path="*">
-          <NotMatch />
-        </Route>
-      </Switch>
+
+      <div className="container">
+        <div className="inner">
+          <Header />
+          <InputTodo
+            addTodoProps={addTodoItem}
+          />
+          <TodosList
+            todos={todos}
+            handleChange={handleChange}
+            deleteTodoProps={delTodo}
+            setUpdate={setUpdate}
+          />
+        </div>
+      </div>
+
     </>
   );
 };
