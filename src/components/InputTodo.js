@@ -1,21 +1,22 @@
-import React, { PureComponent } from 'react';
+import React, { useState } from 'react';
 
-class InputTodo extends PureComponent {
-  state = {
+const InputTodo = (props) => {
+  const [inputText, setInputText] = useState({
     title: '',
-  }
+  });
 
-  onChange = (e) => {
-    this.state({
+  const onChange = (e) => {
+    setInputText({
+      ...inputText,
       [e.target.name]: e.target.value,
     });
   };
 
-  handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (title.trim()) {
-      this.props.addTodoProps(title);
-      this.setState({
+    if (inputText.title.trim()) {
+      props.addTodoProps(inputText.title);
+      setInputText({
         title: '',
       });
     } else {
@@ -23,22 +24,19 @@ class InputTodo extends PureComponent {
     }
   };
 
-  render() {
-    const { title } = this.state;
-
-    return (
-      <form onSubmit={this.handleSubmit} className="form-container">
-        <input
-          type="text"
-          placeholder="Add Todo..."
-          value={title}
-          name="title"
-          onChange={this.onChange}
-        />
-        <button>Submit</button>
-      </form>
-    );
-  }
-}
+  return (
+    <form onSubmit={handleSubmit} className="form-container">
+      <input
+        type="text"
+        className="input-text"
+        placeholder="Add Todo..."
+        value={inputText.title}
+        name="title"
+        onChange={onChange}
+      />
+      <button type="button" className="input-submit">Submit</button>
+    </form>
+  );
+};
 
 export default InputTodo;

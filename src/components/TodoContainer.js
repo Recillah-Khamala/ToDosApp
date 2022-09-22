@@ -1,82 +1,78 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import TodosList from './TodosList';
 import Header from './Header';
 import InputTodo from './InputTodo';
 
-class TodoContainer extends React.PureComponent {
-  state = {
-    todos: [],
-  }
+const TodoContainer = () => {
+  const getInitialTodos = () => {
+    const temp = localStorage.getItem('todos');
+    const savedTodos = JSON.parse(temp);
 
-  componentDidMount() {
-    fetch("https://jsonplaceholder.typicode.com/todos?_limit=10")
-      .then((response) => response.json())
-      .then((data) => this.setState({todos: data }));
-  }
+    return savedTodos || [];
+  };
 
-  handleChange = (id) => {
-    this.setState((prevState) => ({
-      todos: this.state.todos.map((todo) => {
-        if (todo.id === id) {
-          return {
-            ...todo,
-            completed: !todo.completed,
-          };
-        }
-        return todo;
-      }),
+  const [todos, setTodos] = useState(getInitialTodos());
+
+  const handleChange = (id) => {
+    setTodos((prevState) => prevState.map((todo) => {
+      if (todo.id === id) {
+        return {
+          ...todo,
+          completed: !todo.completed,
+        };
+      }
+      return todo;
     }));
   };
 
-  delTodo = (id) => {
-    this.setState({
-      todos: [
-        ...this.state.todos.filter((todo) => todo.id !== id),
-      ],
-    });
+  const delTodo = (id) => {
+    setTodos([
+      ...todos.filter((todo) => todo.id !== id),
+    ]);
   };
 
-  addTodoItem = (title) => {
+  const addTodoItem = (title) => {
     const newTodo = {
       id: uuidv4(),
-      title: exercise,
+      title,
       completed: false,
     };
-    this.setState({
-      todos: [...this.state.todos, newTodo],
-    });
+    setTodos([...todos, newTodo]);
   };
 
-  setUpdate = (updatedTitle, id) => {
-    this.setState({
-      todos: this.state.todos.map((todo) => {
+  const setUpdate = (updatedTitle, id) => {
+    setTodos(
+      todos.map((todo) => {
         if (todo.id === id) {
           todo.title = updatedTitle;
         }
         return todo;
       }),
-    });
-  }
-
-  render() {
-    return (
-      <div className="container">
-        <div className="inner">
-          <Header />
-          <InputTodo
-            addTodoProps={this.addTodoItem}
-          />
-          <TodosList
-            todos={this.state.todos}
-            handleChange={this.handleChange}
-            deleteTodoProps={this.delTodo}
-            setUpdate={this.setUpdate}
-          />
-        </div>
-      </div>
     );
-  }
-}
+  };
+
+  useEffect(() => {
+    const temp = JSON.stringify(todos);
+    localStorage.setItem('todos', temp);
+  }, [todos]);
+
+  return (
+    <div className="container">
+      <div className="inner">
+        <Header />
+        <InputTodo
+          addTodoProps={addTodoItem}
+        />
+        <TodosList
+          todos={todos}
+          handleChange={handleChange}
+          deleteTodoProps={delTodo}
+          setUpdate={setUpdate}
+        />
+      </div>
+    </div>
+  );
+};
 
 export default TodoContainer;
