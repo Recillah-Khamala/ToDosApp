@@ -2,7 +2,7 @@
 
 # Project Name
 
-> "To-do list" is a tool that helps to organize your day. It simply lists the things that you need to do and allows you to mark them as complete.
+> "To-do list" is a tool that helps to organize your day. It creates a list of chores that you need to do and allows you to mark them as complete, edit and delete them.
 
 
 ## Built With
