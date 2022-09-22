@@ -15,7 +15,6 @@ const InputTodo = (props) => {
   };
 
   const handleSubmit = () => {
-    // e.preventDefault();
     const { addTodoProps } = props;
     const { title } = inputText;
     if (title.trim()) {
@@ -48,12 +47,6 @@ const InputTodo = (props) => {
     </form>
   );
 };
-
-// InputTodo.defaultProps = {
-//   addTodoProps: () => {
-
-//   }
-// }
 
 InputTodo.propTypes = {
   addTodoProps: PT.func.isRequired,

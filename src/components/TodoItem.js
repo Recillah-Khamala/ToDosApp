@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { FaTrash } from 'react-icons/fa';
-// import { PropTypes as PT } from 'prop-types';
 import styles from './TodoItem.module.css';
 
 const TodoItem = (data) => {
@@ -27,9 +26,7 @@ const TodoItem = (data) => {
     todo, handleChange, deleteTodoProps, setUpdate,
   } = list;
 
-  console.log(todo, list);
   const { completed, id, title } = todo;
-  // console.log(todo);
 
   const viewMode = {};
   const editMode = {};
@@ -41,7 +38,6 @@ const TodoItem = (data) => {
   }
 
   useEffect(() => () => {
-    console.log('Cleaning up...');
   }, []);
 
   return (
@@ -75,16 +71,5 @@ const TodoItem = (data) => {
     </li>
   );
 };
-
-// TodoItem.propTypes = {
-//   todos: PT.arrayOf(PT.shape({
-//     id: PT.string.isRequired,
-//     title: PT.string.isRequired,
-//     completed: PT.bool.isRequired,
-//     handleChangeProps: PT.func.isRequired,
-//     deleteTodoProps: PT.func.isRequired,
-//     setUpdate: PT.func.isRequired,
-//   })),
-// };
 
 export default TodoItem;
