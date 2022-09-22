@@ -24,8 +24,7 @@ class InputTodo extends PureComponent {
   };
 
   render() {
-
-    const { title } = this.state
+    const { title } = this.state;
 
     return (
       <form onSubmit={this.handleSubmit} className="form-container">
