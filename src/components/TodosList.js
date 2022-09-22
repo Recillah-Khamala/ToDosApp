@@ -1,22 +1,23 @@
 import React from 'react';
 import TodoItem from './TodoItem';
 
-class TodosList extends React.PureComponent {
-  render() {
-    return (
-      <>
-        {this.props.todos.map((todo) => (
-          <TodoItem
-            key={todo.id}
-            todo={todo}
-            handleChangeProps={this.props.handleChangeProps}
-            deleteTodoProps={this.props.deleteTodoProps}
-            setUpdate={this.props.setUpdate}
-          />
-        ))}
-      </>
-    );
-  }
-}
+const TodosList = (data) => {
+  const {
+    handleChange, deleteTodoProps, setUpdate, todos,
+  } = data;
+
+  return (
+    <ul>
+      {todos.map((todo) => (
+        <TodoItem
+          key={todo.id}
+          list={{
+            handleChange, deleteTodoProps, setUpdate, todo,
+          }}
+        />
+      ))}
+    </ul>
+  );
+};
 
 export default TodosList;
