@@ -23,5 +23,9 @@
   "ignorePatterns": [
     "dist/",
     "build/"
+    // "TodoItem.js",
+    // "TodoContainer.js",
+    // "InputTodo.js",
+    // "TodosList.js"
   ]
 }

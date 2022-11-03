@@ -1,17 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import './App.css';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
+import TodoContainer from './components/TodoContainer';
+import About from './pages/About';
+import NotMatch from './pages/NotMatch';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <Router>
+      <Routes>
+        <Route element={<TodoContainer />} path="/" />
+        <Route element={<About />} path="/About" />
+        <Route element={<NotMatch />} Path="*" />
+      </Routes>
+    </Router>
+  </React.StrictMode>,
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
