@@ -13,7 +13,7 @@
 
 ## Live Demo (if available)
 
-[Live Demo Link]( https://rn486.github.io/To-Dos-App)
+[Live Demo Link](coming soon)
 
 
 ## Getting Started
