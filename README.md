@@ -2,7 +2,7 @@
 
 # Project Name
 
-> "To-do list" is a tool that helps to organize your day. It creates a list of chores that you need to do and allows you to mark them as complete, edit and delete them.
+> "ToDoApp" is a tool that helps to organize your day. It creates a list of chores that you need to do and allows you to mark them as complete, edit and delete them.
 
 
 ## Built With
@@ -21,8 +21,8 @@
 ### To have a copy of this project running on your local machine, follow these commands:
 
 - Clone this repo to your local machine
-  -  `git clone git@github.com:aceDavon/math-magician.git`
-  - Open the folder "Math-magician and run `npm install` to install all necesary scripts,
+  -  `git@github.com:Rn486/ToDosApp.git`
+  - Open the folder "ToDosApp and run `npm install` to install all necesary scripts,
   - Run from your termminal, `npm start` to open the project in your browser.
 
 **This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).**
@@ -46,7 +46,7 @@ To get a local copy up and running follow these simple example steps.
 
 - `npx create-react-app todo-list-react`
 
-**cd into math-magician folder, then run from your terminal:**
+**cd into ToDoApp folder, then run from your terminal:**
 
 - `npm start`
 
@@ -54,14 +54,10 @@ To get a local copy up and running follow these simple example steps.
 
 **When the above commands aresuccessfully run, your browser should open on `localhost:3000`, if not, open your browser and load `127.0.0.1:3000` to see your default template loaded**
 
-### Deployment
-
-This project has beed deployed with Gh-pages.
-
 
 ## Authors
 
-👤 **Author1**
+👤 **Author**
 
 - GitHub: [@Rn486](https://github.com/Rn486)
 - Twitter: [@recillahk](https://twitter.com/recillahk)
@@ -72,7 +68,7 @@ This project has beed deployed with Gh-pages.
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/Rn486/To-Dos-App/issues).
+Feel free to check the [issues page](https://github.com/Rn486/ToDosApp/issues).
 
 ## Show your support
 
